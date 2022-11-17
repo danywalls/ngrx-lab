@@ -1,5 +1,5 @@
 <input #name type="text">
 <button (click)="save(name.value)">Save</button>
-<span *ngIf="(name$ | async ) as nameSaved">{{nameSaved.name}}</span>
+<span *ngIf="(name$ | async ) as nameSaved">{{nameSaved}}</span>
 <span *ngIf="(selectedColor$ | async ) as color">Wow! you favorite color is {{color}}</span>
 

@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {Store} from '@ngrx/store';
+
 import {SettingsService} from '../settings/settings.service';
-import {HomeService} from './home.service';
+import {getNameSelector, State} from './state/home.reducers';
 
 @Component({
   selector: 'app-home',
@@ -10,16 +11,16 @@ import {HomeService} from './home.service';
 })
 export class HomeComponent {
   selectedColor$ = this.settingsService.colorPickerAction$;
-  name$ = this.store.select("home");
+  name$ = this.store.select(getNameSelector);
 
   constructor(
-    private store: Store<any>,
+    private store: Store<State>,
     private settingsService: SettingsService,
-    private homeService: HomeService) {
+  ) {
   }
 
   save(name: string) {
     this.store.dispatch({type: '[Home]'});
-    //this.homeService.saveName(name)
+
   }
 }

@@ -1,18 +1,34 @@
-import {createAction, createReducer, on} from '@ngrx/store';
+import {createAction, createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
+import * as AppState from '../../../state/app.state';
 
+export interface State extends AppState.State {
+  home: HomeState
+}
 
 const saveNameAction = createAction('[Home]');
-const initialState = {
-  name: "",
-  color: ""
+
+export interface HomeState {
+  name: string;
 }
-export const homeReducer = createReducer(
+
+const initialState: HomeState = {
+  name: ""
+}
+
+export const homeReducer = createReducer<HomeState>(
   initialState,
-  on(saveNameAction, state => {
+  on(saveNameAction, (state): HomeState => {
     return {
       ...state,
-      name: "hello world",
-      color: "a new color"
+      name: "hello world"
     }
   })
 );
+
+//selector from state
+const getNameFeatureState = createFeatureSelector<HomeState>('home');
+
+export const getNameSelector = createSelector(
+  getNameFeatureState,
+  state => state.name
+)
