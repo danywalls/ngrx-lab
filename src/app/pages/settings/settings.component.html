@@ -1,0 +1,5 @@
+
+<input type="color" #colorPicker/> <button (click)="save(colorPicker.value)"> Save</button>
+<span *ngIf="(name$ | async) as name"> {{name}} , please pick your color :) </span>
+<span *ngIf="(colorSelected$ | async) as colorSelected"> {{colorSelected}}</span>
+

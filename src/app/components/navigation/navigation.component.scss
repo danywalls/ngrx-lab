@@ -1,0 +1,19 @@
+ul {
+  background: blueviolet;
+  padding: 1rem;
+  margin: 0;
+  display: flex;
+  color: white;
+  gap: 1rem;
+  li {
+    cursor: pointer;
+    list-style: none;
+    &:hover {
+      font-weight: bold;
+      transition: ease-in 0.3s;
+    }
+    &:active {
+      font-weight: bold;
+    }
+  }
+}
