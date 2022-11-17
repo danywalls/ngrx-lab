@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {HomeService} from '../home/home.service';
 import {SettingsService} from './settings.service';
 
@@ -10,9 +10,11 @@ import {SettingsService} from './settings.service';
 export class SettingsComponent {
   colorSelected$ = this.settingService.colorPickerAction$;
   name$ = this.homeService.nameAction$;
-  constructor(private settingService: SettingsService, private homeService: HomeService) { }
 
-  save(color:string) {
+  constructor(private settingService: SettingsService, private homeService: HomeService) {
+  }
+
+  save(color: string) {
     this.settingService.setColor(color);
   }
 }

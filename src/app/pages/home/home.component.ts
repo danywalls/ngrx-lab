@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
+import {Component} from '@angular/core';
+import {Store} from '@ngrx/store';
 import {SettingsService} from '../settings/settings.service';
 import {HomeService} from './home.service';
 
@@ -8,17 +8,18 @@ import {HomeService} from './home.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent  {
-
+export class HomeComponent {
   selectedColor$ = this.settingsService.colorPickerAction$;
-  name$ = this.homeService.nameAction$;
-  constructor(private settingsService: SettingsService,
-              private homeService: HomeService) {
+  name$ = this.store.select("home");
+
+  constructor(
+    private store: Store<any>,
+    private settingsService: SettingsService,
+    private homeService: HomeService) {
   }
 
-
-
   save(name: string) {
-    this.homeService.saveName(name)
+    this.store.dispatch({type: '[Home]'});
+    //this.homeService.saveName(name)
   }
 }

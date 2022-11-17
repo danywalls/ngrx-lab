@@ -1,15 +1,14 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Subject} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import {BehaviorSubject} from 'rxjs';
 
-@Injectable({ providedIn: 'root'})
+@Injectable({providedIn: 'root'})
 export class SettingsService {
 
   private colorPickerSubject = new BehaviorSubject<string>('');
   public colorPickerAction$ = this.colorPickerSubject.asObservable()
 
-    public setColor(color: string) {
-      this.colorPickerSubject.next(color);
-    }
+  public setColor(color: string) {
+    this.colorPickerSubject.next(color);
+  }
 
 }
