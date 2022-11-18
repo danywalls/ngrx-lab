@@ -8,13 +8,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavigationComponent} from './components/navigation/navigation.component';
 import {HomeComponent} from './pages/home/home.component';
-import {homeReducer} from './pages/home/state/home.reducers';
 import {SettingsComponent} from './pages/settings/settings.component';
+import {appState} from './state/app.state';
 
-
-const state = {
-  'home': homeReducer
-}
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -27,7 +23,7 @@ const state = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(state),
+    StoreModule.forRoot(appState),
     StoreDevtoolsModule.instrument({
       name: 'ngrx-lab',
       maxAge: 25,
